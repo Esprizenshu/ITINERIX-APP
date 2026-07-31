@@ -88,7 +88,8 @@ para el razonamiento completo):
 
 ## Esquema de base de datos vigente
 
-Ver `supabase/migrations/` como fuente de verdad. Migraciones aplicadas:
+Ver `supabase/migrations/` como fuente de verdad. Migraciones aplicadas
+(local y remoto, proyecto ya enlazado con `supabase link`):
 
 - `20260731000000_init_agencias_profiles_roles.sql` — tipo `user_role` enum,
   tablas `agencias` (id, tipo, nombre, activo, created_at — solo identidad
@@ -105,11 +106,10 @@ diseñado y aprobado por el usuario mientras se conversaba este historial,
 pero **todavía no está migrado** — se crea fase por fase según el plan de
 abajo, no todo de una vez.
 
-`src/types/database.types.ts` está escrito a mano para reflejar la
-migración actual. Reemplazar por la salida real de
-`supabase gen types typescript --linked` en cuanto el proyecto quede
-enlazado al Supabase CLI (pendiente: requiere un access token personal +
-password de la base, no solo las API keys que ya están en `.env.local`).
+`src/types/database.types.ts` es la salida real de
+`supabase gen types typescript --linked` (ya no está escrito a mano). Volver
+a correr ese comando cada vez que se agregue/edite una migración, para
+mantenerlo sincronizado con el esquema remoto.
 
 ## Estado de las fases
 
